@@ -168,8 +168,8 @@ export zip-with3 = (f, xs, ys, zs) --> ...
 # Zips N lists together. If they're of different length, throws an
 # exception.
 #
-# + type: (*throws) => 
-export zip-withN = (f, ...as) --> ...
+# + type: (*throws) => (a1, a2, ..., aN -> b) -> [[a1], [a2], ..., [aN]] -> [b]
+export zip-withN = (f, xss) --> ...
 
 
 # ## Function: unzip
