@@ -29,6 +29,9 @@ Maybe = require 'monads.maybe'
 # Given a predicate, returns the first element to match.
 #
 # + type: (a -> Boolean) -> [a] -> Maybe a
-export find = (p, xs) --> do
-                          for x in xs => if p x => Maybe.of x
-                          else                  => Maybe.Nothing!
+find = (p, xs) --> do
+                   for x in xs => if p x => Maybe.of x
+                   else                  => Maybe.Nothing!
+
+
+module.exports = find
