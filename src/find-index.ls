@@ -29,6 +29,9 @@ Maybe = require 'monads.maybe'
 # Given a predicate, returns the index of the first element to match.
 #
 # + type: (a -> Boolean) -> [a] -> Maybe Int
-export find-index = (p, xs) --> do
-                                for x,i in xs => if p x => Maybe.of i
-                                else                    => Maybe.Nothing!
+find-index = (p, xs) --> do
+                         for x,i in xs => if p x => Maybe.of i
+                         else                    => Maybe.Nothing!
+
+
+module.exports = find-index
