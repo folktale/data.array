@@ -30,3 +30,6 @@ find-index = require './find-index'
 #  
 # + type: (a -> a -> Boolean) -> [a] -> [a]
 unique-by = (p, xs) --> for x,i in xs => x if ((find-index p, xs).get-or-else null) is i
+
+
+module.exports = unique-by
