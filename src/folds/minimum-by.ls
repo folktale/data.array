@@ -34,7 +34,7 @@ minimum-by = (f, xs) -->
   | xs.length is 0 => throw new Error "Can't compute the minimum of an empty list."
   | otherwise      => return fold-right1 compare-and-take-min, xs
 
-  function compare-and-take-min(a, b)
+  function compare-and-take-min(a, b) => switch
     | f a, b <= 0 => a
     | otherwise   => b
 

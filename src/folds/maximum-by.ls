@@ -34,7 +34,7 @@ maximum-by = (f, xs) -->
   | xs.length is 0 => throw new Error "Can't compute the maximum of an empty list."
   | otherwise      => return fold-right1 compare-and-take-max, xs
 
-  function compare-and-take-max(a, b)
+  function compare-and-take-max(a, b) => switch
     | f a, b >= 0 => a
     | otherwise   => b
 
