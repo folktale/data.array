@@ -34,7 +34,7 @@ dist:
 	mkdir -p dist
 
 dist/data.array.umd.js: compile dist
-	$(browserify) lib/index.js --standalone data-array > $@
+	$(browserify) index.js --standalone data-array > $@
 
 dist/data.array.umd.min.js: dist/data.array.umd.js
 	$(uglify) --mangle - < $^ > $@
@@ -52,7 +52,7 @@ documentation:
 	        src/*.ls test/*.ls test/specs/**.ls README.md
 
 clean:
-	rm -rf dist build lib
+	rm -rf dist build lib building transformations common searching zips folds sets
 
 test:
 	$(lsc) test/tap.ls
@@ -60,7 +60,14 @@ test:
 package: compile documentation bundle minify
 	mkdir -p dist/data.array-$(VERSION)
 	cp -r docs/literate dist/data.array-$(VERSION)/docs
-	cp -r lib dist/data.array-$(VERSION)
+	cp index.js dist/data.array-$(VERSION)
+	cp -r building dist/data.array-$(VERSION)
+	cp -r transformations dist/data.array-$(VERSION)
+	cp -r common dist/data.array-$(VERSION)
+	cp -r searching dist/data.array-$(VERSION)
+	cp -r zips dist/data.array-$(VERSION)
+	cp -r folds dist/data.array-$(VERSION)
+	cp -r sets dist/data.array-$(VERSION)
 	cp dist/*.js dist/data.array-$(VERSION)
 	cp package.json dist/data.array-$(VERSION)
 	cp README.md dist/data.array-$(VERSION)
