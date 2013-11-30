@@ -25,4 +25,10 @@
 module.exports = [
   {}
   require './common'
+  require './building'
+  require './folds'
+  require './searching'
+  require './sets'
+  require './transformations'
+  require './zips'
 ].reduce (<<<)
