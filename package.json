@@ -2,7 +2,7 @@
   "name": "data.array",
   "version": "0.0.0",
   "description": "Common array operations and combinators",
-  "main": "lib/index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "make test",
     "prepublish": "make compile"

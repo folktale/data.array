@@ -6,8 +6,29 @@ uglify     = $(bin)/uglifyjs
 VERSION    = $(shell node -e 'console.log(require("./package.json").version)')
 
 
-lib: src/*.ls
-	$(lsc) -o lib -c src/*.ls
+index.js: src/index.ls
+	$(lsc) -o . -c src/index.ls
+
+building: src/building/*.ls
+	$(lsc) -o building -c src/building/*.ls
+
+common: src/common/*.ls
+	$(lsc) -o common -c src/common/*.ls
+
+folds: src/folds/*.ls
+	$(lsc) -o folds -c src/folds/*.ls
+
+searching: src/searching/*.ls
+	$(lsc) -o searching -c src/searching/*.ls
+
+sets: src/sets/*.ls
+	$(lsc) -o sets -c src/sets/*.ls
+
+transformations: src/transformations/*.ls
+	$(lsc) -o transformations -c src/transformations/*.ls
+
+zips: src/zips/*.ls
+	$(lsc) -o zips -c src/zips/*.ls
 
 dist:
 	mkdir -p dist
@@ -23,7 +44,7 @@ bundle: dist/data.array.umd.js
 
 minify: dist/data.array.umd.min.js
 
-compile: lib
+compile: index.js building common folds searching sets transformations zips
 
 documentation:
 	$(groc) --index "README.md"                                              \
