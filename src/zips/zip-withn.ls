@@ -23,7 +23,7 @@
 
 
 fold-right = require '../folds/fold-right'
-rest       = require './rest'
+rest       = require '../common/rest'
 
 
 # # Function: zip-withN
@@ -39,11 +39,12 @@ zip-withN = (f, xss) -->
 
 
 function ensure-lengths-are-equal(xss) =>
-  (rest xss) |> fold-right xss.0, (as, bs) -> 
-                                    | if as.length != bs.length => error!
-                                    | else                      => as
+  (rest xss) |> fold-right xss.0, verify-lengths
 
-function error => throw new Error "Can't zip lists of different lengths."
+
+function verify-lengths(as, bs) => switch
+  | as.length != bs.length => throw new Error "Can't zip lists of different lengths."
+  | otherwise              => as
 
 
 module.exports = zip-withN

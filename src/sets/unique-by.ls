@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
  
-find-index = require './find-index'
+find-index = require '../searching/find-index'
  
 
 # ## Function: unique-by

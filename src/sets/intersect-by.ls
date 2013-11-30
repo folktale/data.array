@@ -22,7 +22,7 @@
  */
  
 
-find = require './find'
+find = require '../searching/find'
 
 
 # # Function: intersect-by

@@ -30,3 +30,6 @@
 all = (f, xs) --> do
                   for x in xs => return false if not (f x)
                   return true
+
+
+module.exports = all
