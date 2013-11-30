@@ -22,17 +22,12 @@
  */
 
 
-module.exports =
-  all: require './all'
-  any: require './any'
-  concat-map: require './concat-map'
-  fold-left: require './fold-left'
-  fold-left1: require './fold-left1'
-  fold-right: require './fold-right'
-  fold-right1: require './fold-right1'
-  scan-left: require './scan-left'
-  scan-left1: require './scan-left1'
-  scan-right: require './scan-right'
-  scan-right1: require './scan-right1'
-  maximum-by: require './maximum-by'
-  minimum-by: require './minimum-by'
+# # Function: scan-left
+#
+# Similar to fold-left, but returns intermediate results.
+#  
+# + type: (a -> b -> a) -> a -> [b] -> [a]
+scan-left = (f, z, xs) --> for x in xs => z := f z, x
+
+
+module.exports = scan-left

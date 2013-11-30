@@ -22,17 +22,18 @@
  */
 
 
-module.exports =
-  all: require './all'
-  any: require './any'
-  concat-map: require './concat-map'
-  fold-left: require './fold-left'
-  fold-left1: require './fold-left1'
-  fold-right: require './fold-right'
-  fold-right1: require './fold-right1'
-  scan-left: require './scan-left'
-  scan-left1: require './scan-left1'
-  scan-right: require './scan-right'
-  scan-right1: require './scan-right1'
-  maximum-by: require './maximum-by'
-  minimum-by: require './minimum-by'
+scan-right = require './scan-right'
+rest       = require '../common/rest'
+
+
+# # Function: scan-right1
+#
+# Scan right for non-empty lists.
+#  
+# + type: (a -> a -> a) -> [a] -> [a]
+scan-right1 = (f, xs) -->
+  | xs.length is 0 => throw new Error "scan-right1 can't be applied to empty lists."
+  | otherwise      => scan-right f, xs.0, (rest xs)
+
+
+module.exports = scan-right1
