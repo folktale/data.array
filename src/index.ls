@@ -23,7 +23,6 @@
 
 
 module.exports = [
-  {}
   require './common'
   require './building'
   require './folds'
@@ -31,4 +30,4 @@ module.exports = [
   require './sets'
   require './transformations'
   require './zips'
-].reduce (<<<)
+].reduce (<<<), {}
