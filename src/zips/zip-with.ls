@@ -21,8 +21,15 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  unzip: require './unzip'
-  zip-with: require './zip-with'
-  zip-with3: require './zip-with3'
-  zip-withN: require './zip-withn'
+
+# # Function: zip-with
+#
+# Zips two lists together with a binary function.
+#  
+# + type: (a, b -> c) -> [a] -> [b] -> [c]
+zip-with = (f, xs, ys) -->
+  | xs.length != ys.length => throw new Error "Can't zip lists of different length."
+  | otherwise              => [(f x, ys[i]) for x,i in xs]
+
+
+module.exports = zip-with

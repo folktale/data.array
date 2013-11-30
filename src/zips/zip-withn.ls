@@ -21,8 +21,29 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  unzip: require './unzip'
-  zip-with: require './zip-with'
-  zip-with3: require './zip-with3'
-  zip-withN: require './zip-withn'
+
+fold-right = require '../folds/fold-right'
+rest       = require './rest'
+
+
+# # Function: zip-withN
+#
+# Zips a list of lists with a function.
+#  
+# + type: (a1, a2, ..., aN -> b) -> [(a1, a2, ..., aN)] -> [b]
+zip-withN = (f, xss) -->
+  | xss.length < 0  => throw new Error "Needs at least two lists to zip."
+  | otherwise       => do
+                       ensure-lengths-are-equal xss
+                       [f.apply null, xs for xs in xss]
+
+
+function ensure-lengths-are-equal(xss) =>
+  (rest xss) |> fold-right xss.0, (as, bs) -> 
+                                    | if as.length != bs.length => error!
+                                    | else                      => as
+
+function error => throw new Error "Can't zip lists of different lengths."
+
+
+module.exports = zip-withN

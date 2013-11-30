@@ -21,8 +21,20 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  unzip: require './unzip'
-  zip-with: require './zip-with'
-  zip-with3: require './zip-with3'
-  zip-withN: require './zip-withn'
+
+# # Function: zip-with3
+#
+# Zips three lists together with a function.
+#  
+# + type: (a, b, c -> d) -> [a] -> [b] -> [c] -> [d]
+zip-with3 = (f, xs, ys, zs) -->
+  ensure-lengths-are-equal xs, ys, zs
+  [f(x, ys[i], zs[i]) for x,i in xs]
+
+
+function ensure-lengths-are-equal(xs, ys, zs) =>
+  if xs.length != ys.length or xs.length != zs.length
+    throw new Error "Can't zip lists of different length."
+
+
+module.exports = zip-with3

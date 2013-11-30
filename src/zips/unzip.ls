@@ -21,8 +21,27 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  unzip: require './unzip'
-  zip-with: require './zip-with'
-  zip-with3: require './zip-with3'
-  zip-withN: require './zip-withn'
+replicate = require '../building/replicate'
+ 
+
+# # Function: unzip
+#
+# Transforms a list of pairs into a list of each component.
+#  
+# + type: [(a1, a2, ..., aN)] -> ([a1], [a2], ..., [aN])
+unzip = (xss) ->
+  | xss.length is 0 => []
+  | otherwise       => do
+                       expected-length = xss.0.length
+                       result = [replicate expected-length, []]
+                       for xs in xss => do
+                                        ensure-length expected-length, xs.length
+                                        for x,i in xss => result[i].push x
+                       return result
+
+
+function ensure-length(a, b)
+  if a != b => throw new Error "Can't unzip lists with varying list lengths."
+
+
+module.exports = unzip
