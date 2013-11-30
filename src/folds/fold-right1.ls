@@ -21,22 +21,18 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+fold-right = require './fold-right'
+rest       = require '../common/rest'
 
-fold-right1 = require './fold-right1'
 
-
-# # Function: minimum-by
+# # Function: fold-right1
 #
-# Returns the minimum element according to a classifier.
+# Fold right for non-empty lists.
 #  
-# + type: (a -> a -> Ordering) -> [a] -> a
-minimum-by = (f, xs) -->
-  | xs.length is 0 => throw new Error "Can't compute the minimum of an empty list."
-  | otherwise      => return fold-right1 compare-and-take-min, xs
-
-  function compare-and-take-min(a, b)
-    | f a, b <= 0 => a
-    | otherwise   => b
+# + type: (a -> a -> a) -> [a] -> a
+fold-right1 = (f, xs) -->
+  | xs.length is 0 => throw new Error "fold-right1 can't be applied to empty lists."
+  | otherwise      => fold-right f, xs.0, (rest xs)
 
 
-module.exports = minimum-by
+module.exports = fold-right1

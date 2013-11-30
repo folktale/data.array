@@ -22,21 +22,15 @@
  */
 
 
-fold-right1 = require './fold-right1'
+fold-right = require './fold-right'
 
 
-# # Function: minimum-by
+# # Function: concat-map
 #
-# Returns the minimum element according to a classifier.
-#  
-# + type: (a -> a -> Ordering) -> [a] -> a
-minimum-by = (f, xs) -->
-  | xs.length is 0 => throw new Error "Can't compute the minimum of an empty list."
-  | otherwise      => return fold-right1 compare-and-take-min, xs
-
-  function compare-and-take-min(a, b)
-    | f a, b <= 0 => a
-    | otherwise   => b
+# Maps over a list and concatenate results.
+#
+# + type: (a -> [b]) -> [a] -> [b]
+concat-map = (f, xs) --> fold-right ((a, b) -> b ++ (f a)), [], xs
 
 
-module.exports = minimum-by
+module.exports = concat-map

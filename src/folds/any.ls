@@ -22,21 +22,14 @@
  */
 
 
-fold-right1 = require './fold-right1'
-
-
-# # Function: minimum-by
+# # Function: any
 #
-# Returns the minimum element according to a classifier.
+# True if the predicate holds for any item in the list.
 #  
-# + type: (a -> a -> Ordering) -> [a] -> a
-minimum-by = (f, xs) -->
-  | xs.length is 0 => throw new Error "Can't compute the minimum of an empty list."
-  | otherwise      => return fold-right1 compare-and-take-min, xs
-
-  function compare-and-take-min(a, b)
-    | f a, b <= 0 => a
-    | otherwise   => b
+# + type: (a -> Boolean) -> [a] -> Boolean
+any = (f, xs) --> do
+                  for x in xs => return true if f x
+                  return false
 
 
-module.exports = minimum-by
+module.exports = any

@@ -21,6 +21,10 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+fold-right1 = require './fold-right1'
+
+
 # # Function: maximum-by
 #
 # Returns the maximum element according to a classifier.
@@ -28,7 +32,7 @@
 # + type: (a -> a -> Ordering) -> [a] -> a
 maximum-by = (f, xs) -->
   | xs.length is 0 => throw new Error "Can't compute the maximum of an empty list."
-  | otherwise      => return xs.reduce-right compare-and-take-max 
+  | otherwise      => return fold-right1 compare-and-take-max, xs
 
   function compare-and-take-max(a, b)
     | f a, b >= 0 => a

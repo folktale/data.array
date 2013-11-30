@@ -22,21 +22,14 @@
  */
 
 
-fold-right1 = require './fold-right1'
-
-
-# # Function: minimum-by
+# # Function: fold-right
 #
-# Returns the minimum element according to a classifier.
+# Right associative fold.
 #  
-# + type: (a -> a -> Ordering) -> [a] -> a
-minimum-by = (f, xs) -->
-  | xs.length is 0 => throw new Error "Can't compute the minimum of an empty list."
-  | otherwise      => return fold-right1 compare-and-take-min, xs
-
-  function compare-and-take-min(a, b)
-    | f a, b <= 0 => a
-    | otherwise   => b
+# + type: (a -> b -> b) -> b -> [a] -> b
+fold-right = (f, z, xs) --> do
+                            for x in xs => z := f x, z
+                            return z
 
 
-module.exports = minimum-by
+module.exports = fold-right
