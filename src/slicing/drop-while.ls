@@ -21,10 +21,18 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  group-by: require './group-by'
-  intersperse: require './intersperse'
-  map: require './map'
-  partition: require './partition'
-  reverse: require './reverse'
-  filter: require './filter'
+
+# # Function: drop-while
+#
+# Drops all first items that don't pass a predicate test.
+#  
+# + type: (a -> Boolean) -> [a] -> [a]
+drop-while = (f, xs) --> do
+                         result = []
+                         for x in xs => do
+                                        if f x => result.push x
+                                        else   => break
+                         return result
+
+
+module.exports = drop-while

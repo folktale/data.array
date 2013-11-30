@@ -21,10 +21,16 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  group-by: require './group-by'
-  intersperse: require './intersperse'
-  map: require './map'
-  partition: require './partition'
-  reverse: require './reverse'
-  filter: require './filter'
+
+# # Function: slice
+#
+# Returns a subsection of the list.
+#  
+# + type: Int -> Int -> [a] -> [a]
+slice = (start, end, xs) --> do
+                             result = []
+                             for i from start til end => result.push xs[i]
+                             return result
+
+
+module.exports = slice

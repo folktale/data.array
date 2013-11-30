@@ -21,10 +21,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  group-by: require './group-by'
-  intersperse: require './intersperse'
-  map: require './map'
-  partition: require './partition'
-  reverse: require './reverse'
-  filter: require './filter'
+
+# # Function: filter
+#
+# Keeps only items that pass the predicate test.
+#  
+# + type: (a -> Boolean) -> [a] -> [a]
+filter = (f, xs) --> [x for x in xs if f x]
+
+
+module.exports = filter

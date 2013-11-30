@@ -21,10 +21,15 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  group-by: require './group-by'
-  intersperse: require './intersperse'
-  map: require './map'
-  partition: require './partition'
-  reverse: require './reverse'
-  filter: require './filter'
+
+slice = require './slice'
+ 
+# # Function: drop
+#
+# Takes all but the first N items of the list.
+#  
+# + type: Int -> [a] -> [a]
+drop = (n, xs) --> slice n, xs.length, xs
+
+
+module.exports = drop

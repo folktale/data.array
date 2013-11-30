@@ -21,10 +21,18 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  group-by: require './group-by'
-  intersperse: require './intersperse'
-  map: require './map'
-  partition: require './partition'
-  reverse: require './reverse'
-  filter: require './filter'
+
+Maybe = require 'monads.maybe'
+
+
+# # Function: lookup
+#
+# Finds the value associated with a key in an association list.
+#  
+# + type: (a -> Boolean) -> [(a, b)] -> Maybe(b)
+lookup = (f, xss) --> do
+                      for [k,v] in xss => if f k => return Maybe.Just v
+                      return Maybe.Nothing!
+
+
+module.exports = lookup

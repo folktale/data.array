@@ -21,10 +21,18 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-module.exports =
-  group-by: require './group-by'
-  intersperse: require './intersperse'
-  map: require './map'
-  partition: require './partition'
-  reverse: require './reverse'
-  filter: require './filter'
+
+# # Function: take-while
+#
+# Takes the first elements that pass a predicate test.
+#  
+# + type: (a -> Boolean) -> [a] -> [a]
+take-while = (f, xs) --> do
+                         result = []
+                         for x in xs => do
+                                        if f x => result.push x
+                                        else   => break
+                         return result
+
+
+module.exports = take-while

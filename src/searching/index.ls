@@ -26,3 +26,4 @@ module.exports =
   find: require './find'
   find-index: require './find-index'
   find-indices: require './find-indices'
+  lookup: require './lookup'
