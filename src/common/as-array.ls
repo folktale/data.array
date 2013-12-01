@@ -27,7 +27,7 @@
 # Converts any sequence-like object to an array.
 #  
 # + type: Seq(a) -> [a]
-as-array = (xs) -> [x for x in xs]
+as-array = (xs) -> [...xs]
 
 
 module.exports = as-array
