@@ -27,7 +27,7 @@
 # Concatenates two lists.
 #
 # + type: [a] -> [a] -> [a]
-concat = (as1, as2) --> as1 ++ as2
+concat = (as1, as2) --> [...as1, ...as2]
 
 
 module.exports = concat
