@@ -28,9 +28,7 @@
 #  
 # + type: Int -> a -> [a]
 replicate = (n, a) --> do
-                       result = []
-                       for i from 1 to n => result.push a
-                       return result
+                       return [a] * n
 
 
 module.exports = replicate
