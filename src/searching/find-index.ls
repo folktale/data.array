@@ -30,8 +30,8 @@ Maybe = require 'monads.maybe'
 #
 # + type: (a -> Boolean) -> [a] -> Maybe Int
 find-index = (p, xs) --> do
-                         for x,i in xs => if p x => Maybe.of i
-                         else                    => Maybe.Nothing!
+                         for x,i in xs => if p x => return Maybe.of i
+                         return Maybe.Nothing!
 
 
 module.exports = find-index
