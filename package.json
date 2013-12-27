@@ -1,6 +1,6 @@
 {
   "name": "data.array",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Common array operations and combinators",
   "main": "./index.js",
   "scripts": {
