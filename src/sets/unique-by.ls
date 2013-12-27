@@ -29,7 +29,8 @@ find-index = require '../searching/find-index'
 # Removes duplicate elements from a list, given a comparison function.
 #  
 # + type: (a -> a -> Boolean) -> [a] -> [a]
-unique-by = (p, xs) --> for x,i in xs => x if ((find-index p, xs).get-or-else null) is i
+unique-by = (p, xs) -->
+  for x,i in xs => x if ((find-index (-> p x, it), xs).get-or-else null) is i
 
 
 module.exports = unique-by
