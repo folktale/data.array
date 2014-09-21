@@ -30,8 +30,8 @@ Maybe = require 'monads.maybe'
 #
 # + type: (a -> Boolean) -> [a] -> Maybe a
 find = (p, xs) --> do
-                   for x in xs => if p x => Maybe.of x
-                   else                  => Maybe.Nothing!
+                   for x in xs when p x => Maybe.of x
+                   Maybe.Nothing!
 
 
 module.exports = find
